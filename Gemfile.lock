@@ -1,0 +1,25 @@
+PATH
+  remote: .
+  specs:
+    wavetimes (0.1.0)
+      optparse
+      wavefile
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.15.0)
+    optparse (0.2.0)
+    rake (13.0.6)
+    wavefile (1.1.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  minitest (~> 5.0)
+  rake (~> 13.0)
+  wavetimes!
+
+BUNDLED WITH
+   2.3.3
