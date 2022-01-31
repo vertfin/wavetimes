@@ -12,10 +12,30 @@ class Wavetimes::Album
     files.sort.each_with_index do |fn,idx|
       song = Song.new(idx: idx, start: start, filename: fn)
       self.songs << song
-      start += song.duration.to_f
+      begin
+        start += song.duration.to_f
+      rescue
+        byebug
+      end
     end
     return nil if self.songs.length.zero?
-    self.duration = Wavetimes::T.new(start + self.songs.last.duration.to_f)
+    self.duration = Wavetimes::T.new(start)
+  end
+
+  def serialized
+    o = {}
+    %w{artist title ref}.each do |f|
+      if v = self.send(f)
+        o[f.to_sym] = v
+      end
+    end
+    o[:duration] = duration
+    o[:songs] = songs.collect { |song| song.serialized }
+    o
+  end
+
+  def to_json
+    serialized.to_json
   end
 
   def to_s

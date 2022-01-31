@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'wavetimes'
+require_relative "../lib/wavetimes"
 Wavetimes::Cli.new

@@ -1,6 +1,6 @@
 module Wavetimes::Views
 
-  class Json
+  class Html
 
   end
 

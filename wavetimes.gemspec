@@ -25,14 +25,16 @@ Gem::Specification.new do |spec|
       (f == __FILE__) || f.match(%r{\A(?:(?:test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
     end
   end
-  spec.bindir = "exe"
-  #spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+
+  # spec.bindir = "exe"
+  # spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  spec.executables = ['bin/wavetimes']
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
+  spec.add_dependency "byebug"
   spec.add_dependency "optparse"
   spec.add_dependency "wavefile"
-  # spec.add_dependency "open-uri"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

@@ -2,12 +2,14 @@ PATH
   remote: .
   specs:
     wavetimes (0.1.0)
+      byebug
       optparse
       wavefile
 
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (11.1.3)
     minitest (5.15.0)
     optparse (0.2.0)
     rake (13.0.6)

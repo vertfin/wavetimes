@@ -1,7 +1,7 @@
-
 class Song
-  attr_accessor :idx, :filename, :name, :start, :duration
 
+  ATTRS = [ :idx, :filename, :name, :start, :duration ]
+  attr_accessor *ATTRS
 
   def initialize a
     self.idx = a[:idx].to_i
@@ -11,6 +11,7 @@ class Song
     bn.shift
     self.name = bn.join("-")
     get_duration
+    self
   end
 
   def time
@@ -54,7 +55,17 @@ class Song
 
 
   def get_duration
-    Wavefile::Reader.new(filename).duration
-    byebug
+    d = WaveFile::Reader.new(filename).total_duration
+    self.duration = Wavetimes::T.new(d)
+    raise Error, "nil duration!" if self.duration.nil?
   end
+
+  def serialized
+    o = {}
+    ATTRS.each do |k|
+      o[k] = self.send(k)
+    end
+    o
+  end
+
 end
